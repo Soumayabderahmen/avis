@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+{% block title %}New Specialites
+{% endblock %}
+
+{% block content %}
+
+	<div class="page-wrapper">
+
+		<div class="content container-fluid">
+
+			<div class="row" style="justify-content: center;">
+				<div class="col-md-6">
+
+					<div class="card">
+
+						<div class="card-body pt-0">
+							<div class="card-header">
+								<h5 class="card-title">Ajouter Specialite</h5>
+							</div>
+							{{ form_start(form) }}
+							<div class="settings-form">
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Note
+											<span class="star-red">*</span>
+										</label>
+										{{ form_widget(form.note, {attr:{'class':'form-control'}}) }}
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Commentaire
+											<span class="star-red">*</span>
+										</label>
+										{{ form_widget(form.text, {attr:{'class':'form-control'}}) }}
+									</div>
+								</div>
+								
+
+								{# <div class="change-photo-btn  bg-grey">
+																	<div>
+																		<i class="feather-upload"></i>
+																	</div>
+																	{{ form_widget(form.images, {attr:{'class':'form-control change-photo-btn  bg-grey'}}) }}
+																</div> #}
+
+								<div class="col-12">
+									<div class="doctor-submit text-end">
+										<div class="text-right">
+											{{ form_row(form.Enregistrer , {attr:{'class':'btn btn-primary save-btn'}}) }}
+
+
+										</div>
+									</div>
+								</div>
+							</div>
+							{{ form_end(form) }}
+						</div>
+						<center></div>
+
+					</div>
+
+
+				</div>
+
+			{% endblock %}
+

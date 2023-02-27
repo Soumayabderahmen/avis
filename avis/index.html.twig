@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+{% block title %}Avis
+{% endblock %}
+{% block content %}
+	<div class="page-wrapper">
+		<div class="content container-fluid pb-0">
+			<h4 class="mb-3">Avis</h4>
+			<div class="row">
+				<div class="page-header">
+					<div class="row align-items-center">
+						<div class="col-md-12 d-flex justify-content-end">
+							<div class="text-right"></div>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<table class="table datatable-basic table table-borderless hover-table" id="datatable">
+						<div class="card-body">
+							<div class="header-elements">
+								<thead class="thead-light">
+									<tr>
+
+
+										<th>Note</th>
+										<th>Medecin</th>
+										<th>Date</th>
+										<th>Statut</th>
+
+										{# <th>patient</th> #}
+										<th colspan="3">actions</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for avi in avis %}
+										<tr>
+
+
+											<td>{{ avi.note }}</td>
+											<td>{{ avi.medecin.nom }}
+												{{ avi.medecin.prenom }}</td>
+											<td>{{ avi.date ? avi.date|date('Y-m-d') : '' }}</td>
+
+											{# <td>{{ avi.patient.nom}}</td> #}
+
+											<td>{{ avi.statut }}</td>
+											<td colspan="3" style="display: inline-flex;">
+
+
+												<a href="{{ path('app_avis_edit', {'id': avi.id}) }}" class="btn btn-sm bg-info-light">
+													<i class="far fa-edit"></i>
+
+												</a>
+												&nbsp;
+												{{ include('avis/_delete_form.html.twig') }}
+											</td>
+											<td></td>
+										</tr>
+									{% else %}
+										<tr>
+											<td colspan="6">no records found</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			{% endblock %}
+

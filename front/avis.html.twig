@@ -1,0 +1,498 @@
+{% extends 'home.html.twig' %}
+
+{% block title %}Medecins
+{% endblock %}
+{% block body %}
+	<div class="content">
+		<div class="container">
+			<div class="card">
+				<div class="card-body">
+					<div class="doctor-widget">
+						<div class="doc-info-left">
+							<div class="doctor-img">
+								{% for user in medecin %}
+											 <img src="{{ asset('/uploads/'~user.image) }}" alt="" width="150" height="231,8" /> 
+											 
+							</div>
+							<div class="doc-info-cont">
+
+								<h4 class="doc-name"></h4>
+
+								<h2 class="doc-speciality"><h2 style="color: #20c0f3;"><span style="color: black">Dr. </span>{{user.nom}} {{user.prenom}}</h2></h2>
+								<p class="doc-department"><img src="{{asset('client/assets/img/specialities/specialities-05.png')}}" class="img-fluid" alt="Speciality">{{user.specialites}}</p>
+								<div class="rating">
+								
+                                           
+
+
+
+
+
+									<span class="d-inline-block average-rating">({{countavis}}) Avis</span>
+								</div>
+								<div class="clinic-details">
+									<p class="doc-location">
+										<i class="fas fa-map-marker-alt"></i>
+										{{user.gouvernorat}}
+										<a href="javascript:void(0);">Get Directions</a>
+									</p>
+									<ul class="clinic-gallery">
+										<li>
+											<a href="#" data-fancybox="gallery">
+												<img src="{{asset('client/assets/img/features/feature-01.jpg')}}" alt="Feature">
+											</a>
+										</li>
+										<li>
+											<a href="#" data-fancybox="gallery">
+												<img src="{{asset('client/assets/img/features/feature-02.jpg')}}" alt="Feature Image">
+											</a>
+										</li>
+										<li>
+											<a href="#" data-fancybox="gallery">
+												<img src="{{asset('client/assets/img/features/feature-03.jpg')}}" alt="Feature">
+											</a>
+										</li>
+										<li>
+											<a href="#" data-fancybox="gallery">
+												<img src="{{asset('client/assets/img/features/feature-04.jpg')}}" alt="Feature">
+											</a>
+										</li>
+									</ul>
+								</div>
+								
+							</div>
+						</div>
+						<div class="doc-info-right">
+							<div class="clini-infos">
+								<ul>
+									<li>
+										<i class="far fa-thumbs-up"></i>
+										99%</li>
+									<li>
+										<i class="far fa-comment"></i>
+										35 Feedback</li>
+									<li>
+										<i class="fas fa-map-marker-alt"></i>
+										Newyork, USA</li>
+									<li>
+										<i class="far fa-money-bill-alt"></i>
+										$100 per hour
+									</li>
+								</ul>
+							</div>
+							<div class="doctor-action">
+								<a href="javascript:void(0)" class="btn btn-white fav-btn">
+									<i class="far fa-bookmark"></i>
+								</a>
+								<a href="chat.html" class="btn btn-white msg-btn">
+									<i class="far fa-comment-alt"></i>
+								</a>
+								<a href="javascript:void(0)" class="btn btn-white call-btn" data-bs-toggle="modal" data-bs-target="#voice_call">
+									<i class="fas fa-phone"></i>
+								</a>
+								<a href="javascript:void(0)" class="btn btn-white call-btn" data-bs-toggle="modal" data-bs-target="#video_call">
+									<i class="fas fa-video"></i>
+								</a>
+							</div>
+							<div class="clinic-booking">
+								<a class="apt-btn" href="booking.html">Book Appointment</a>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-body pt-0">
+					<nav class="user-tabs mb-4">
+						<ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+							<li class="nav-item">
+								<a class="nav-link active" href="#doc_overview" data-bs-toggle="tab">A PROPOS</a>
+							</li>
+							{# <li class="nav-item">
+															<a class="nav-link" href="#doc_locations" data-bs-toggle="tab">Localistaion</a>
+														</li> #}
+							<li class="nav-item">
+								<a class="nav-link" href="#doc_reviews" data-bs-toggle="tab">Avis</a>
+							</li>
+
+						</ul>
+					</nav>
+					<div class="tab-content pt-0">
+						<div role="tabpanel" id="doc_overview" class="tab-pane fade show active">
+							<div class="row">
+								<div class="col-md-12 col-lg-9">
+									{% for user in medecin %}
+										<div class="grid">
+											<div class="col-md-6">
+												<div class="widget education-widget">
+													<h4 class="widget-title">Diplome & Formation</h4>
+													<div class="experience-box">
+														<ul class="experience-list">
+															<li>
+																<div class="experience-user">
+																	<div class="before-circle"></div>
+																</div>
+																<div class="experience-content">
+																	<div class="timeline-content">
+																		<a href="#/" class="name">{{ user.diplomeFormation}}</a>
+
+																	</div>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+
+											<div class="widget education-widget">
+													<h4 class="widget-title">Location</h4>
+													<div class="experience-box">
+														<ul class="experience-list">
+															<li>
+																<div class="experience-user">
+																	<div class="before-circle"></div>
+																</div>
+																<div class="experience-content">
+																	<div class="timeline-content">
+																	<p class="exp-year">Adresse Medecin</p>
+																		<a href="#/" class="name">{{user.adresse}}</a>
+
+																	</div>
+																	<p class="exp-year">Adresse Cabinet</p>
+																<h4 class="exp-title">{{user.adresseCabinet}}
+																</h4>
+																	<div class="timeline-content">
+																		<a href="#/" class="name"></a>
+
+																	</div>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+										</div>
+										<div class="g-col-6">
+
+											<h4 class="widget-title">A PROPOS</h4>
+											<div class="experience-box">
+												<ul class="experience-list">
+													<li>
+														<div class="experience-user">
+															<div class="before-circle"></div>
+														</div>
+														<div class="experience-content">
+															<div class="timeline-content">
+																<p class="exp-year">Email</p>
+																<h4 class="exp-title">{{user.email}}</h4>
+																<p class="exp-year">Dr.</p>
+																<h4 class="exp-title">{{user.nom}}
+																	{{user.prenom}}</h4>
+																<p class="exp-year">Telephone</p>
+																<h4 class="exp-title">{{user.telephone}}
+																</h4>
+																<p class="exp-year">Telephone fixe</p>
+																<h4 class="exp-title">{{user.fixe}}
+																</h4>
+																<p class="exp-year">CNAM</p>
+																<h4 class="exp-title">{{user.cnam=="oui"?"Non"}}
+																</h4>
+																<p class="exp-year">Gouvernorat</p>
+																<h4 class="exp-title">{{user.gouvernorat}}
+																</h4>
+																<p class="exp-year">Tarif</p>
+																<h4 class="exp-title">{{user.tarif}}
+																</h4>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="experience-content">
+															<div class="timeline-content"></div>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="service-list">
+											<h4>Titre</h4>
+											<ul class="clearfix">
+												<li>{{user.titre}}
+												</li>
+											</ul>
+										</div>
+										<div class="service-list">
+											<h4>Specialites</h4>
+											<ul class="clearfix">
+												<li>{{user.specialites}}</li>
+
+											</ul>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+							<div role="tabpanel" id="doc_locations" class="tab-pane fade">
+								<div class="location-list">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="clinic-content">
+												<h4 class="clinic-name">
+													<a href="#">Smile Cute Dental Care Center</a>
+												</h4>
+												<p class="doc-speciality">MDS - Periodontology and Oral Implantology, BDS</p>
+												<div class="rating">
+													<span class="d-inline-block average-rating">(4)</span>
+												</div>
+												<div class="clinic-details mb-0">
+													<h5 class="clinic-direction">
+														<i class="fas fa-map-marker-alt"></i>
+														2286 Sundown Lane, Austin, Texas 78749, USA
+														<br><a href="javascript:void(0);">Get Directions</a>
+													</h5>
+													<ul>
+														<li><a href="{{('client/assets/img/features/feature-01.jpg')}}" data-fancybox="gallery2"><img src="assets/img/features/feature-01.jpg" alt="Feature Image"></a></li>
+														<li><a href="assets/img/features/feature-02.jpg" data-fancybox="gallery2"><img src="assets/img/features/feature-02.jpg" alt="Feature Image"></a></li>
+														<li><a href="assets/img/features/feature-03.jpg" data-fancybox="gallery2"><img src="assets/img/features/feature-03.jpg" alt="Feature Image"></a></li>
+														<li><a href="assets/img/features/feature-04.jpg" data-fancybox="gallery2"><img src="assets/img/features/feature-04.jpg" alt="Feature Image"></a></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+								<div class="location-list">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="clinic-content">
+												<h4 class="clinic-name">
+													<a href="#">The Family Dentistry Clinic</a>
+												</h4>
+												<p class="doc-speciality">MDS - Periodontology and Oral Implantology, BDS</p>
+												<div class="rating">
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star"></i>
+													<span class="d-inline-block average-rating">(4)</span>
+												</div>
+												<div class="clinic-details mb-0">
+													<p class="clinic-direction">
+														<i class="fas fa-map-marker-alt"></i>
+														2883 University Street, Seattle, Texas Washington, 98155
+														<br><a href="javascript:void(0);">Get Directions</a>
+													</p>
+													<ul>
+														<li><a href="assets/img/features/feature-01.jpg" data-fancybox="gallery2"><img src="assets/img/features/feature-01.jpg" alt="Feature Image"></a></li>
+														<li><a href="assets/img/features/feature-02.jpg" data-fancybox="gallery2"><img src="assets/img/features/feature-02.jpg" alt="Feature Image"></a></li>
+														<li><a href="assets/img/features/feature-03.jpg" data-fancybox="gallery2"><img src="assets/img/features/feature-03.jpg" alt="Feature Image"></a></li>
+														<li><a href="assets/img/features/feature-04.jpg" data-fancybox="gallery2"><img src="assets/img/features/feature-04.jpg" alt="Feature Image"></a></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="clinic-timing">
+												<div>
+													<p class="timings-days">
+														<span>
+															Tue - Fri
+														</span>
+													</p>
+													<p class="timings-times">
+														<span>11:00 AM - 1:00 PM</span>
+														<span>6:00 PM - 11:00 PM</span>
+													</p>
+												</div>
+												<div>
+													<p class="timings-days">
+														<span>Sat - Sun</span>
+													</p>
+													<p class="timings-times">
+														<span>8:00 AM - 10:00 AM</span>
+														<span>3:00 PM - 7:00 PM</span>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-2">
+											<div class="consult-price">
+												$350
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div role="tabpanel" id="doc_reviews" class="tab-pane fade">
+								<div class="widget review-listing">
+									<ul class="comments-list">
+										<li>
+
+								{%for avis in avis%}
+												{% if avis.statut =="Activer"%}
+													<div class="comment">
+												
+													{% if avis.patient is not null %}
+											 <img src="{{ asset('/uploads/'~avis.patient.image) }}" alt="" width="40" height="40" /> 
+													 {% endif %}
+                                                      {# {% if is_granted('ROLE_PATIENT') %}
+													 {% set user = app.user %}
+													<img class="rounded-circle" src="{{ asset('/uploads/'~app.user.image) }}" alt="" width="31"  /> 
+													 {% endif %} #}
+													  {# {% if is_granted('ROLE_MZ') %}
+													 {% set user = app.user %}
+													<img class="rounded-circle" src="{{ asset('/uploads/'~app.user.image) }}" alt="" width="31"  /> 
+													 {% endif %} #}
+														<div class="comment-body">
+															<div class="meta-data">
+																<span class="comment-author">{{avis.patient}}</span>
+																<span class="comment-date">{{avis.date|date('d/M')}}</span>
+																<div class="review-count rating">
+																	{% if avis is defined and avis.note is defined and avis.note == 2 %}
+																		<svg xmlns="http://www.w3.org/2000/svg" style="color: gold;" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewbox="0 0 16 16">
+																			<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+																		</svg>
+																		<svg style="color: gold;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewbox="0 0 16 16">
+																			<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+																		</svg>
+																		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewbox="0 0 16 16">
+																			<path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+																		</svg>
+																		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewbox="0 0 16 16">
+																			<path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+																		</svg>
+																		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewbox="0 0 16 16">
+																			<path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+																		</svg>
+																		{%endif%}
+
+																		{% if avis is defined and avis.note is defined and avis.note == 1 %}
+																			<svg style="color: gold;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewbox="0 0 16 16">
+																				<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+																			</svg>
+																			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewbox="0 0 16 16">
+																				<path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+																			</svg>
+																			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewbox="0 0 16 16">
+																				<path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+																			</svg>
+																			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewbox="0 0 16 16">
+																				<path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+																			</svg>
+																			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewbox="0 0 16 16">
+																				<path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+																			</svg>
+																			{%endif%}
+																			{% if avis is defined and avis.note is defined and avis.note == 3 %}
+																				<svg xmlns="http://www.w3.org/2000/svg" style="color: gold;" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewbox="0 0 16 16">
+																					<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+																				</svg>
+																				<svg xmlns="http://www.w3.org/2000/svg" style="color: gold;" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewbox="0 0 16 16">
+																					<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+																				</svg>
+																				<svg xmlns="http://www.w3.org/2000/svg" style="color: gold;" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewbox="0 0 16 16">
+																					<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+																				</svg>
+																				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewbox="0 0 16 16">
+																					<path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+																				</svg>
+																				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewbox="0 0 16 16">
+																					<path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+																				</svg>
+																				{%endif%}
+																				{% if avis is defined and avis.note is defined and avis.note == 4 %}
+																					<svg style="color: gold;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewbox="0 0 16 16">
+																						<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+																					</svg>
+																					<svg style="color: gold;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewbox="0 0 16 16">
+																						<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+																					</svg>
+																					<svg style="color: gold;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewbox="0 0 16 16">
+																						<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+																					</svg>
+																					<svg style="color: gold;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewbox="0 0 16 16">
+																						<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+																					</svg>
+																					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewbox="0 0 16 16">
+																						<path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+																					</svg>
+																					{%endif%}
+																					{% if avis is defined and avis.note is defined and avis.note == 5 %}
+
+																						<svg style="color: gold;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewbox="0 0 16 16">
+																							<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+																						</svg>
+																						<svg style="color: gold;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewbox="0 0 16 16">
+																							<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+																						</svg>
+																						<svg style="color: gold;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewbox="0 0 16 16">
+																							<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+																						</svg>
+																						<svg style="color: gold;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewbox="0 0 16 16">
+																							<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+																						</svg>
+																						<svg style="color: gold;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewbox="0 0 16 16">
+																							<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+																						</svg>
+																						{%endif%}
+																					</div>
+																				</div>
+																				<p class="comment-content">
+																					{{avis.text}}
+																				</p>
+																			</div>
+																		</div>
+																	{% endif %}
+																{% endfor %}
+															</li>
+														</ul>
+													</div>
+													<div class="write-review">
+														<h4>Donner votre Avis pour
+															{% for user in medecin %}
+																Dr.<strong>{{user.nom}}
+																	{{user.prenom}}</strong>
+																{%endfor%}
+															</h4>
+															{% if app.user %}
+																{{ form_start(formAvis) }}
+																<div class="form-group">
+																	<label>Title of your review</label>
+																	{{ form_widget(formAvis.note, {attr:{'class':'form-control'}}) }}
+																</div>
+																<div class="form-group">
+																	<label>Your review</label>
+																	{{ form_widget(formAvis.text, {attr:{'class':'form-control'}}) }}
+																	
+																</div>
+															
+																<div class="col-12">
+																	<div class="doctor-submit text-end">
+																		<div class="text-right">
+																			{{ form_row(formAvis.Enregistrer , {attr:{'class':'btn btn-primary save-btn'}}) }}
+																		</div>
+																		{{ form_end(formAvis) }}
+																	{% else %}
+																	<div class="col-12">
+																	<div class="doctor-submit text-end">
+																		<div class="text-right">
+																		<a href="{{ path('app_login') }}" class="btn btn-primary btn-lg">Ajouter Avis</a>
+																		</div>
+																		{%endif%}
+																	</div>
+																</div>
+																
+																{%endfor%}
+															</div>
+														</div>
+													</div>
+
+												</div>
+											</div>
+										{% endblock %}
+								
+
